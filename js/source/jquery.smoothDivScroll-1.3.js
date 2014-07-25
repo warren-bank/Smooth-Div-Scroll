@@ -522,18 +522,18 @@
 				el.data("scrollingHotSpotRight").addClass(o.scrollingHotSpotRightVisibleClass);
 
 				// Fade in the hotspots
-				el.data("scrollingHotSpotLeft").add(el.data("scrollingHotSpotRight")).stop(true, false).fadeTo(fadeSpeed, 0.35);
+				el.data("scrollingHotSpotLeft").add(el.data("scrollingHotSpotRight")).stop(true, false).fadeTo(fadeSpeed, o.scrollingHotSpotOpacity || 0.35);
 			}
 			// Don't fade, just show them
 			else {
 
 				// The left hotspot
 				el.data("scrollingHotSpotLeft").addClass(o.scrollingHotSpotLeftVisibleClass);
-				el.data("scrollingHotSpotLeft").removeAttr("style");
+				el.data("scrollingHotSpotLeft").removeAttr("style").css("opacity", o.scrollingHotSpotOpacity || 0.35);
 
 				// The right hotspot
 				el.data("scrollingHotSpotRight").addClass(o.scrollingHotSpotRightVisibleClass);
-				el.data("scrollingHotSpotRight").removeAttr("style");
+				el.data("scrollingHotSpotRight").removeAttr("style").css("opacity", o.scrollingHotSpotOpacity || 0.35);
 			}
 
 			self._showHideHotSpots();
@@ -558,8 +558,8 @@
 			}
 			// Don't fade, just hide them
 			else {
-				el.data("scrollingHotSpotLeft").removeClass(o.scrollingHotSpotLeftVisibleClass).removeAttr("style");
-				el.data("scrollingHotSpotRight").removeClass(o.scrollingHotSpotRightVisibleClass).removeAttr("style");
+				el.data("scrollingHotSpotLeft").removeClass(o.scrollingHotSpotLeftVisibleClass).removeAttr("style").css("opacity", 0.0);
+				el.data("scrollingHotSpotRight").removeClass(o.scrollingHotSpotRightVisibleClass).removeAttr("style").css("opacity", 0.0);
 			}
 
 		},
