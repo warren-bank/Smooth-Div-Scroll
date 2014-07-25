@@ -190,6 +190,11 @@
 						
 						// Callback
 						self._trigger("touchStopped");
+					},
+					filterTarget: function(target, e) {
+						if (!/down|start/.test(e.type)) {
+							return !(/area|a|input/i.test(target.tagName));
+						}
 					}
 				});
 			}
