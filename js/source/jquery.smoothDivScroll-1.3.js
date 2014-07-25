@@ -522,7 +522,7 @@
 				el.data("scrollingHotSpotRight").addClass(o.scrollingHotSpotRightVisibleClass);
 
 				// Fade in the hotspots
-				el.data("scrollingHotSpotLeft").add(el.data("scrollingHotSpotRight")).fadeTo(fadeSpeed, 0.35);
+				el.data("scrollingHotSpotLeft").add(el.data("scrollingHotSpotRight")).stop(true, false).fadeTo(fadeSpeed, 0.35);
 			}
 			// Don't fade, just show them
 			else {
@@ -546,12 +546,12 @@
 			if (fadeSpeed !== undefined) {
 
 				// Fade out the left hotspot
-				el.data("scrollingHotSpotLeft").fadeTo(fadeSpeed, 0.0, function () {
+				el.data("scrollingHotSpotLeft").stop(true, false).fadeTo(fadeSpeed, 0.0, function () {
 					el.data("scrollingHotSpotLeft").removeClass(o.scrollingHotSpotLeftVisibleClass);
 				});
 
 				// Fade out the right hotspot
-				el.data("scrollingHotSpotRight").fadeTo(fadeSpeed, 0.0, function () {
+				el.data("scrollingHotSpotRight").stop(true, false).fadeTo(fadeSpeed, 0.0, function () {
 					el.data("scrollingHotSpotRight").removeClass(o.scrollingHotSpotRightVisibleClass);
 				});
 
@@ -771,7 +771,7 @@
 		move: function (pixels) {
 			var self = this, el = this.element, o = this.options;
 			// clear queue, move to end
-			el.data("scrollWrapper").stop(true, true);
+			el.data("scrollWrapper").stop(true, false);
 
 			// Only run this code if it's possible to scroll left or right,
 			if ((pixels < 0 && el.data("scrollWrapper").scrollLeft() > 0) || (pixels > 0 && el.data("scrollableAreaWidth") > (el.data("scrollWrapper").innerWidth() + el.data("scrollWrapper").scrollLeft())) || o.manualContinuousScrolling ) {
