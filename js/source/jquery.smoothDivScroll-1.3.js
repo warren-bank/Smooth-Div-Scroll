@@ -426,19 +426,19 @@
 						case "onStart":
 							self.showHotSpotBackgrounds();
 							el.data("hideHotSpotBackgroundsInterval", setTimeout(function () {
-								self.hideHotSpotBackgrounds(250);
+								self.hideHotSpotBackgrounds(self.options.hotSpotFadeSpeed === 0 ? undefined : self.options.hotSpotFadeSpeed || 250);
 							}, o.hotSpotsVisibleTime));
 							break;
 						case "hover":
 							el.mouseenter(function (event) {
 								if (o.hotSpotScrolling) {
 									event.stopPropagation();
-									self.showHotSpotBackgrounds(250);
+									self.showHotSpotBackgrounds(self.options.hotSpotFadeSpeed === 0 ? undefined : self.options.hotSpotFadeSpeed || 250);
 								}
 							}).mouseleave(function (event) {
 								if (o.hotSpotScrolling) {
 									event.stopPropagation();
-									self.hideHotSpotBackgrounds(250);
+									self.hideHotSpotBackgrounds(self.options.hotSpotFadeSpeed === 0 ? undefined : self.options.hotSpotFadeSpeed || 250);
 								}
 							});
 							break;
